@@ -1,0 +1,10 @@
+block header
+  header.site-header
+    .site-header__inner
+      .site-header__inner--headline
+        h1.headline #{info.title}
+      .site-nav
+        nav.site-nav__inner
+            ul.site-nav__inner--list
+              each content in contents
+                +navOutput(content)

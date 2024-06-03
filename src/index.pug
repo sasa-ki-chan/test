@@ -1,0 +1,11 @@
+extends ./assets/html/template
+block pageConfig
+  - var imgDir = "./assets/img/";
+
+block main 
+  main.site-main 
+    .site-main__inner 
+      h2.site-main__title トップページ
+      p.site-main__description 佐々木のホームページです。
+      .img-wrap 
+        img(src=imgDir + "sasaki.jpg", alt="トップページの画像")

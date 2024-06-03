@@ -1,0 +1,48 @@
+block config
+  -
+    const MODE_DEV = WEBPACK_DEV //- webpackの環境変数を取得
+
+    const site = {
+        loading: "loading",
+        available: "available",
+    }
+
+    const info={
+        title: "佐々木のホームーページ",
+        description: "佐々木のホームーページです。",
+        icon: "assets/img/common/icon.jpg",
+        twitter: "https://twitter.com/sasak_ki____",
+        mail: "nkmk0reimu@gmail.com",
+    }
+
+
+    const path={
+          css: "assets/css",
+          img: "../assets/img",
+          js: "assets/js",
+    }
+
+    const contents = {
+        top: "top",
+        oekaki: "oekaki",
+    }
+
+  mixin contentsOutput(content)
+    if content === "top"
+      block top
+        include _pages/_top
+    else if content === "oekaki"
+      block oekaki
+        include _pages/_oekaki
+    else if content === "404"
+      block 404
+        include _pages/_404
+
+  mixin navOutput(content)
+    li.ste-nav__list
+      if content === "top"
+        button(class="ste-nav__list--item is-active" id='top-nav') TOP
+      else if content === "oekaki"
+        button(class="ste-nav__list--item is-inactive" id='oekaki-nav') OEKAKI
+
+

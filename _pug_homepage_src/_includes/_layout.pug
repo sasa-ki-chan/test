@@ -1,0 +1,16 @@
+block config
+  include _config
+    - var page = "top";
+
+doctype html
+html(lang='ja')
+  block head
+      include _components/_head
+  body(class=`site-body`)
+    block header
+      include _components/_header
+    main.site-main
+      block contents
+        include _components/_contents
+    block footer
+      include _components/_footer
