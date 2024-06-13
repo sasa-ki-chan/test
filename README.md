@@ -1,3 +1,4 @@
+## webpack5で静的ファイルをビルドする環境
 静的ファイルをwebpackを用いて公開ディレクトリにビルドするやつ
 ====
 
@@ -12,8 +13,8 @@ watchオプションでブラウザを起動した際に、ファイルの変更
 ## 使い方
 npm でもyarn でもOK
 
-yarn dev (development状態でのビルド)
-yarn watch(development状態でブラウザを開き、ファイルの変更に反応し、ブラウザが再リロード)
+`yarn dev` (development状態でのビルド)
+`yarn watch`(development状態でブラウザを開き、ファイルの変更に反応し、ブラウザが再リロード)
 ↑これできない
 
 *助言求む*
