@@ -14,6 +14,8 @@ module.exports = {
     
     mode: process.env.NODE_ENV === "development"? "development": "production",
     
+    target: 'web',
+    
     context: init.SRC_DIR,
 
     entry: entries,
@@ -37,12 +39,13 @@ module.exports = {
 
     optimization: {
         splitChunks: {
-          name: 'lib',
+          name: init.DIST.JS +'lib',
           chunks: 'initial',
         }
     },
 
     watch: true,
+
 
     devServer: {
         hot: true,
@@ -50,7 +53,10 @@ module.exports = {
         static: {
             directory: init.DIST_DIR,
           },
-        port: 3000
+        port: 3000,
+        watchFiles: ["htdocs"],
+        liveReload: true,
+        historyApiFallback: true,
     },
 
     plugins: [

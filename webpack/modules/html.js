@@ -18,4 +18,10 @@ const html = files.map(file => {
     });
 });
 
+// const htmlEntries = html.reduce((entry, file) => {
+//     const name = path.parse(file).name;
+//     entry[init.DIST_DIR + name] = file;
+//     return entry;
+// }, {});
+
 module.exports = html;
