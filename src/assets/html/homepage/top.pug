@@ -1,0 +1,19 @@
+block page
+  - var page = "top"
+  - var pageJS = true
+
+block config 
+  include config
+
+block meta
+  include meta
+
+doctype html
+html 
+  block head
+    +meta(page,pageName,title,description)
+  block header
+    include header
+  block main
+  block footer
+    include footer

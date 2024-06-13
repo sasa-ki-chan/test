@@ -3,9 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 
 const init = require('./webpack/init');
 const loaders = require('./webpack/modules/loaders');
@@ -14,9 +12,11 @@ const htmlPlugins = require('./webpack/modules/html');
 
 module.exports = {
     
-    mode: process.env.NODE_ENV,
+    mode: process.env.NODE_ENV === "development"? "development": "production",
     
-    entry: entries ,
+    context: init.SRC_DIR,
+
+    entry: entries,
 
     module: {
         rules: loaders
@@ -26,18 +26,38 @@ module.exports = {
         extensions: ['.js', '.json', '.scss', '.css'],
         alias: {
             '@': init.SRC_DIR,
-        },
+            '@js': init.JS_DIR
+        }
     },
 
     output: {
         path: init.DIST_DIR,
-        publicPath: 'auto',
         filename: '[name].js'
+    },
+
+    optimization: {
+        splitChunks: {
+          name: 'lib',
+          chunks: 'initial',
+        }
+    },
+
+    watch: true,
+
+    devServer: {
+        hot: true,
+        open: true,
+        static: {
+            directory: init.DIST_DIR,
+          },
+        port: 3000
     },
 
     plugins: [
 
         ...htmlPlugins,
+
+        new webpack.HotModuleReplacementPlugin(),
 
         new MiniCssExtractPlugin({
             filename: '[name].css'
@@ -48,14 +68,6 @@ module.exports = {
         }),
 
         new RemoveEmptyScriptsPlugin(),
-
-        (process.env.NODE_ENV === 'development') ? new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            server: { baseDir: [init.DIST_DIR] },
-            reload: true,
-            files: init.SRC_DIR
-        }): () => {},
 
         new CopyWebpackPlugin({
             patterns: [
@@ -69,5 +81,6 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
+
     ],
 }

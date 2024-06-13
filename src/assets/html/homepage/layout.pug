@@ -1,0 +1,18 @@
+block config 
+  include config
+  //configを読み込んで変数を引っ張ってくる
+
+doctype html
+html 
+  head#site-head 
+    block meta 
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(name="description", content=description)
+    title= title
+    block css 
+      link(rel="stylesheet", href="../assets/css/common.css")
+      link(rel="stylesheet", href=`../assets/css/${page}.css`)
+    block js 
+      script(src="../assets/js/common.js")
+      script(src=`../assets/js/${page}.js`)

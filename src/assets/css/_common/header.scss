@@ -1,0 +1,27 @@
+.site-header {
+
+    position:fixed;
+    min-height:100px;
+    width:100vw;
+    background:$color-main;
+    opacity:0.8;
+
+    &__logo {
+
+        display:inline-block;
+        height:50px;
+        margin:25px 10px;
+
+        img {
+            position:relative;
+            display: inline-block;
+            width: auto;
+            height:100%;
+        }
+    }
+
+    &__text {
+        display:inline-block;
+        margin:15px auto;
+    }
+}

@@ -1,0 +1,12 @@
+mixin meta(page,pageName,title,description)
+  head#site-head 
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content=description)
+    if(page==="top")
+      title= title
+    else 
+      title= pageName + " | " + title
+    link(rel="stylesheet", href="./assets/css/common.css")
+    link(rel="stylesheet", href="./assets/css/top.css")
+    script(src="./assets/js/common.js")

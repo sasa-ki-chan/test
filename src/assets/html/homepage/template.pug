@@ -1,0 +1,39 @@
+block page
+  - var page = "template";
+  - var pageName = "テンプレート";
+  - var pageJs = false;
+
+block config 
+  include config
+
+doctype html
+html(lang='ja')
+  head#site-head
+    block meta
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(name="description", content=description)
+    - if(page === "top")
+      title= title
+    - else
+      title= pageName + " | " + title
+    
+    block css
+      link(rel="stylesheet", href="../assets/css/common.css")
+      link(rel="stylesheet", href=`../assets/css/${page}.css`)
+
+    block js
+    - if(page === "top")
+      script(src="./assets/js/common.js")
+    - else
+      script(src="../assets/js/common.js")
+    
+    block pageJs
+      - if(pageJS)
+        script(src=`../assets/js/${page}.js`)
+        
+  block header 
+    include header
+  block main
+  block footer 
+    include footer
