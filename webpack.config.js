@@ -37,12 +37,12 @@ module.exports = {
         filename: '[name].js'
     },
 
-    optimization: {
-        splitChunks: {
-          name: init.DIST.JS +'lib',
-          chunks: 'initial',
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //       name: init.DIST.JS +'lib',
+    //       chunks: 'initial',
+    //     }
+    // },
 
     watch: true,
 
@@ -54,11 +54,11 @@ module.exports = {
             directory: init.DIST_DIR,
           },
         port: 3000,
-        watchFiles: ["htdocs"],
-        liveReload: true,
-        historyApiFallback: true,
-    },
-
+        watchFiles: ["src/**/*.*"],
+        watchFiles: ["src"],
+         liveReload: true,
+         historyApiFallback: true,
+     },
     plugins: [
 
         ...htmlPlugins,
